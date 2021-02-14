@@ -38,11 +38,12 @@ http.createServer(function (request, response) {
             response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
             response.end(names);
         });
-    });
-    con.end(err=> {
-        if (err) throw err;
-        console.log('Closed databased connection.');
-        process.exit();
+
+        con.end(err=> {
+            if (err) throw err;
+            console.log('Closed databased connection.');
+            process.exit();
+        });
     });
 }
 ).listen(process.env.PORT || 3000);
