@@ -5,7 +5,7 @@ http.createServer(function (request, response) {
     let names = "";
     let q = url.parse(request.url, true);
     const mysql = require("mysql");
-    const con = mysql.createConnection({
+    const con = mysql.createPool({
         host: "us-cdbr-east-03.cleardb.com",
         user: "bdd9d9b8d4db5b",
         password: "2481dad7",
@@ -37,12 +37,6 @@ http.createServer(function (request, response) {
             }
             response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
             response.end(names);
-        });
-
-        con.end(err=> {
-            if (err) throw err;
-            console.log('Closed databased connection.');
-            process.exit();
         });
     });
 }
