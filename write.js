@@ -34,7 +34,7 @@ http.createServer(function (request, response) {
     });
         console.log("server received req");
         response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
-        response.end("Hello " + q.query["name"] + q.query["score"]);
+        response.end(q.query["name"] + ": " + q.query["score"] + "was stored in DB");
     }
 ).listen(process.env.PORT || 3030);
 console.log('listening ...');
