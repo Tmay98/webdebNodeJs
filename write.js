@@ -4,7 +4,7 @@ let url = require("url")
 http.createServer(function (request, response) {
     let q = url.parse(request.url, true);
     const mysql = require("mysql");
-    const con = mysql.createConnection({
+    const con = mysql.createPool({
         host: "us-cdbr-east-03.cleardb.com",
         user: "bdd9d9b8d4db5b",
         password: "2481dad7",
