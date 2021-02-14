@@ -31,6 +31,12 @@ http.createServer(function (request, response) {
             if (err) throw err;
             console.log("1 record inserted");
         });
+
+        con.end(err=> {
+            if (err) throw err;
+            console.log('Closed databased connection.');
+            process.exit();
+        });
     });
         console.log("server received req");
         response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
