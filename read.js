@@ -41,7 +41,7 @@ http.createServer(function (request, response) {
         // When done with the connection, release it.
         connection.release();
         // Handle error after the release.
-        if (error) throw error;
+        if (err) throw error;
     });
 }
 ).listen(process.env.PORT || 3000);

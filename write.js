@@ -34,7 +34,7 @@ http.createServer(function (request, response) {
         // When done with the connection, release it.
         connection.release();
         // Handle error after the release.
-        if (error) throw error;
+        if (err) throw error;
     });
         console.log("server received req");
         response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
