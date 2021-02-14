@@ -4,7 +4,7 @@ let url = require("url")
 http.createServer(function (request, response) {
     let q = url.parse(request.url, true);
     const mysql = require("mysql");
-    const con = mysql.createPool({
+    const con = mysql.createConnection({
         host: "us-cdbr-east-03.cleardb.com",
         user: "bdd9d9b8d4db5b",
         password: "2481dad7",
@@ -32,6 +32,13 @@ http.createServer(function (request, response) {
             console.log("1 record inserted");
         });
     });
+
+    con.end(err=> {
+        if (err) throw err;
+        console.log('Closed databased connection.');
+        process.exit();
+    });
+
         console.log("server received req");
         response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
         response.end(q.query["name"] + ": " + q.query["score"] + "was stored in DB");
