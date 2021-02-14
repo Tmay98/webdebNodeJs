@@ -1,1 +1,1 @@
-web: node read.js
+web: node write.js
