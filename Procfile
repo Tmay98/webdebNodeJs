@@ -1,1 +1,1 @@
-web: node writeFile.js
+web: node write.js
