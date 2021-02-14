@@ -13,6 +13,18 @@ http.createServer(function (request, response) {
 
     con.connect(function (err) {
         if (err) throw err;
+
+        const createTableQuery = [
+            'CREATE TABLE IF NOT EXISTS score',
+            '(id INT AUTO_INCREMENT PRIMARY KEY,',
+            'name VARCHAR(255),',
+            'score INT)'
+        ].join(' ');
+        con.query(createTableQuery, (err, result) => {
+            if (err) throw err;
+            console.log('Table created');
+        });
+
         console.log("connected");
         let sql = "INSERT INTO score(name, score) values ('" + q.query["name"] + "', " +  q.query["score"] + ")";
         con.query(sql, function (err, result) {
