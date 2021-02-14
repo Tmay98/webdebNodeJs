@@ -38,35 +38,11 @@ http.createServer(function (request, response) {
             response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
             response.end(names);
         });
+        // When done with the connection, release it.
+        connection.release();
+        // Handle error after the release.
+        if (error) throw error;
     });
-
-    // con.connect(function (err) {
-    //     if (err) throw err;
-    //
-    //     const createTableQuery = [
-    //         'CREATE TABLE IF NOT EXISTS score',
-    //         '(id INT AUTO_INCREMENT PRIMARY KEY,',
-    //         'name VARCHAR(255),',
-    //         'score INT)'
-    //     ].join(' ');
-    //
-    //     con.query(createTableQuery, (err, result) => {
-    //         if (err) throw err;
-    //         console.log('Table created');
-    //     });
-    //
-    //     console.log("connected");
-    //     let sql = "SELECT * FROM score";
-    //     con.query(sql, function (err, result) {
-    //         if (err) throw err;
-    //         console.log("1 record inserted");
-    //         for (i = 0; i < result.length; i++ ) {
-    //             names = names.concat(result[i].name + ": " + result[i].score + "<br>");
-    //         }
-    //         response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
-    //         response.end(names);
-    //     });
-    // });
 }
 ).listen(process.env.PORT || 3000);
 console.log('listening ...');
