@@ -26,6 +26,7 @@ http.createServer(function (request, response) {
             response.end(names);
         });
     });
+    response.end();
 }
 ).listen(process.env.PORT || 3000);
 console.log('listening ...');
