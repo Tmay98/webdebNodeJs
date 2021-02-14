@@ -2,20 +2,20 @@
   "name": "tommy-may",
   "version": "1.0.0",
   "description": "COMP4537 project",
-  "main": "COMP4537/labs/4/writeFile.js",
+  "main": "write.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tmay98/COMP4537.git"
+    "url": "git+https://github.com/Tmay98/webdebNodeJs.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Tmay98/COMP4537/issues"
+    "url": "https://github.com/Tmay98/webdebNodeJsissues"
   },
-  "homepage": "https://github.com/Tmay98/COMP4537#readme",
+  "homepage": "https://github.com/Tmay98/webdebNodeJs#readme",
   "dependencies": {
     "mysql": "^2.18.1"
   }
