@@ -1,1 +1,1 @@
-web: node read_assignment.js
+web: node read.js
