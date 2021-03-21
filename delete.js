@@ -1,8 +1,7 @@
 let http = require('http');
-let url = require("url");
+let url = require("url")
 
 http.createServer(function (request, response) {
-        let names = "[";
         let q = url.parse(request.url, true);
         const mysql = require("mysql");
         const con = mysql.createPool({
@@ -15,24 +14,20 @@ http.createServer(function (request, response) {
         con.getConnection(function(err, connection) {
             if (err) throw err;
 
-            console.log("connected");
-            let sql = "SELECT * FROM quote";
-            connection.query(sql, function (err, result) {
+            let sql = "DELETE from quote where id=" +  q.query["index"];
+            connection.query(sql, (err, result) => {
                 if (err) throw err;
-                console.log("1 record inserted");
-                for (i = 0; i < result.length; i++ ) {
-                    names = names.concat("\"" + result[i].id + "\", \"" + result[i].quoteText + "\", \"" + result[i].author + "\", ");
-                }
-                names = names.slice(0, -2)
-                names = names.concat("]");
+                console.log('Table created');
                 connection.release();
-                response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
-                response.end(names);
             });
+            console.log("connected");
             // When done with the connection, release it.
             // Handle error after the release.
             if (err) throw error;
         });
+        console.log("server received req");
+        response.writeHead(200, {'Content-type': 'text/html', "Access-Control-Allow-Origin": "*"});
+        response.end("deleted!");
     }
-).listen(process.env.PORT || 3000);
+).listen(process.env.PORT || 3040);
 console.log('listening ...');
